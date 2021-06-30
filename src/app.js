@@ -67,6 +67,24 @@ app.get('/weather', (req, res) => {
     res.send('Weather page')
 })
 
+//match any page 
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Nguyen Minh Duc',
+        errorMessage: 'Help article not found'
+    })
+})
+
+//match any page 
+app.get('*', (req, res) => {
+    res.render ('404', {
+        title: '404',
+        name: 'Nguyen Minh Duc',
+        errorMessage: 'Page not found',
+    })
+})
+
 app.listen(3000, () => {
     console.log('Server is on port 3000')
 })
