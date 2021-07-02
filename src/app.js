@@ -63,8 +63,18 @@ app.get('/help', (req, res) => {
 //     res.send('<h1>Abouth1>')
 // })
 
+//Implement query string
 app.get('/weather', (req, res) => {
-    res.send('Weather page')
+    if(!req.query.address){
+        return res.send({
+            error: 'You must provide an address'
+        })
+    }
+    res.send({
+        forecast: 'It is snowing',
+        location: 'Philadelphia',
+        address: req.query.address
+    })
 })
 
 //match any page 
