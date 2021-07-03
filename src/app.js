@@ -6,6 +6,8 @@ const geocode = require('./utils/geocode')
 
 
 const app = express()
+const port = process.env.PORT || 3000
+
 const publicDirectoryPath = path.join(__dirname, '../public')
 //Set path to templates directory 
 const viewsPath = path.join(__dirname, '../templates/views')
@@ -86,7 +88,7 @@ app.get('/weather', (req, res) => {
                 return res.send({
                     error
                 })
-            }
+            } 
 
             res.send({
                 forecast: forecastData,
@@ -115,6 +117,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is on port 3000')
+app.listen(port, () => {
+    console.log('Server is on port '+port)
 })
